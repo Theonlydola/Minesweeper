@@ -1,0 +1,125 @@
+#include <stdio.h>
+#include <stdlib.h>
+int r=0,c=0;
+void mines(int ba[r][c],int x, int y,int r,int c);
+int main()
+{
+    int i,j;
+//int r=0 , c=0;
+    int x,y;
+
+    scanf("%d%d",&r,&c);
+    int ba[r][c];
+    for(i=0; i<r; i++)
+    {
+        for(j=0; j<c; j++)
+        {
+            ba[i][j]=0;
+            printf("%d ",ba[i][j]);
+        }
+        printf("\n");
+    }
+    long op;
+    op=ba[2][3];
+    printf("\n%d",op); printf("\n%d",op+1); printf("\n%d",op+100);
+    do
+    {
+        printf("play your move ");
+        scanf("%d%d",&x,&y);
+    }
+    while(x>=r||y>=c);
+
+    mines(ba,x,y,r,c);
+        for(i=0; i<r; i++)
+    {
+        for(j=0; j<c; j++)
+            printf("%d ",ba[i][j]);
+        printf("\n");
+    }
+
+    return 0;
+}
+void mines(int ba[r][c],int x, int y,int r,int c)
+{
+    int tc,tr;
+    int m;
+    int i,j;
+    //time_t t;
+    srand(time(NULL));
+    m=1+((r*c)/10);
+    while (m!=0)
+    {
+        tr=rand()%r;
+        tc=rand()%c;
+        if ((tr!=(x-1)&&tr!=(x)&&tr!=(x+1))&&(tc!=(y)&&tc!=(y-1)&&tc!=(y+1)))
+        {
+
+            if (ba[tr][tc]!=9)
+            {
+                ba[tr][tc] = 9;
+                m--;
+            }
+
+        }
+    }
+    for(i=0; i<r; i++)
+    {
+        for(j=0; j<c; j++)
+            printf("%d ",ba[i][j]);
+        printf("\n");
+    }
+    printf("\n");    printf("\n");    printf("\n");    printf("\n");
+    for(i=0; i<r; i++)
+    {
+        for(j=0; j<c; j++)
+        {
+            if  (ba[i][j]!=9)
+            {
+                if (ba[i-1][j-1]==9)
+                {
+                    ba[i][j]++;
+                }
+
+                if (ba[i-1][j]==9)
+                {
+                    ba[i][j]++;
+                }
+
+                if (ba[i-1][j+1]==9)
+                {
+                    ba[i][j]++;
+                }
+
+                if (ba[i][j-1]==9)
+                  {
+                       ba[i][j]++;
+                  }
+                if (ba[i][j+1]==9)
+                {
+                    ba[i][j]+=1;
+                }
+
+                if (ba[i+1][j-1]==9)
+                  {
+                    ba[i][j]+=1;
+                  }
+                if (ba[i+1][j]==9)
+                    {
+                    ba[i][j]+=1;
+                    }
+                if (ba[i+1][j+1]==9)
+                    {
+                    ba[i][j]+=1;
+                    }
+            }
+
+
+
+
+        }
+
+
+    }
+
+}
+
