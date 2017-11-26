@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+int r=0,c=0;
+void mines(int ba[r][c],int x, int y,int r,int c);
+int main()
+{
+    int i,j;
+//int r=0 , c=0;
+    int x,y;
+  1
+    scanf("%d%d",&r,&c);
+    int ba[r][c];
+    for(i=0; i<r; i++)
+    {
+        for(j=0; j<c; j++)
+        {
+            ba[i][j]=0;
+            printf("%d ",ba[i][j]);
+        }
+        printf("\n");
+    }
+   do
+   {printf("play your move ");
+    scanf("%d%d",&x,&y);
+   }
+   while(x>=r||y>=c);
+
+    mines(ba,x,y,r,c);
+    for(i=0; i<r; i++)
+    {
+        for(j=0; j<c; j++)
+            printf("%d ",ba[i][j]);
+        printf("\n");
+    }
+    return 0;
+}
+void mines(int ba[r][c],int x, int y,int r,int c)
+{
+    int tc,tr;
+    int m;
+    //time_t t;
+    srand(time(NULL));
+    m=1+((r*c)/10);
+    while (m!=0)
+    {
+        tr=rand()%r;
+        tc=rand()%c;
+        if ((tr!=(x-1)&&tr!=(x)&&tr!=(x+1))&&(tc!=(y)&&tc!=(y-1)&&tc!=(y+1)))
+        {
+//    *(*(ba+tr)+tc)=9;
+            if (ba[tr][tc]!=9)
+            {
+                ba[tr][tc] = 9;
+                m--;
+            }
+            //printf("%d",ba[tr][tc]);
+        }
+    }
+}
