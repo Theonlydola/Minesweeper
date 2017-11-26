@@ -1,0 +1,15 @@
+ switch (i)
+           { case 0 :
+               switch (j)
+               {
+                   case 0 : 
+                       {if (ba[0][1]==9) ba[0][0]++;
+                   if (ba[1][0]==9) ba[0][0]++;
+                   if (ba[1][1]==9) ba[0][0]++;
+                       }
+                   case c-1 : {if (ba[0][c-2]==9) ba[0][c-1]++;
+                   if (ba[1][c-2]==9) ba[0][c-1]++;
+                   if (ba[1][c-1]==9) ba[0][c-1]++;
+                   default {}
+                       }
+               } 
