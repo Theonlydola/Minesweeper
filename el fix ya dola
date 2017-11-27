@@ -15,9 +15,9 @@ int main()
         for(j=0; j<c; j++)
         {
             ba[i][j]=0;
-            printf("%d ",ba[i][j]);
+
         }
-        printf("\n");
+
     }
 
 
@@ -27,7 +27,8 @@ int main()
         printf("play your move ");
         scanf("%d%d",&x,&y);
     }
-    while(x>=r||y>=c);
+    while(x>r||y>c||x==0||y==0);
+
 
     mines(ba,x,y,r,c);
     printf("\n\n\n\n\n\n");
@@ -53,7 +54,7 @@ void mines(int ba[r][c],int x, int y,int r,int c)
     {
         tr=rand()%r;
         tc=rand()%c;
-        if ((tr!=(x-2)&&(x-1)&&(x))&&(tc!=(y-1)&&(y-2)&&(y)))
+        if ((tr!=(x-1)&&(x)&&(x-2))&&(tc!=(y-1)&&(y)&&(y-2)))
 
         {
 
@@ -69,6 +70,8 @@ void mines(int ba[r][c],int x, int y,int r,int c)
 
         }
     }
+
+
     /*for(i=0; i<r; i++)
     {
         for(j=0; j<c; j++)
