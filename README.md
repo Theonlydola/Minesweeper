@@ -53,17 +53,17 @@ void mines(int ba[r][c],int x, int y,int r,int c)
     {
         tr=rand()%r;
         tc=rand()%c;
-        if (tr!=(x-2)||tr!=(x-1)||tr!=(x))
+        if ((tr!=(x-2)&&(x-1)&&(x))&&(tc!=(y-1)&&(y-2)&&(y)))
 
         {
-            if (tc!=(y-1)||tc!=(y-2)||tc!=(y))
-                {
+
+
                          if (ba[tr][tc]!=9)
             {
                 ba[tr][tc] = 9;
                 m--;
             }
-                }
+
 
 
 
