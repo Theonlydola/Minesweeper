@@ -1,0 +1,225 @@
+#include <stdio.h>
+#include <stdlib.h>
+int r=0,c=0;
+void mines(int ba[r][c],int x, int y,int r,int c);
+int main()
+{
+    int i,j;
+//int r=0 , c=0;
+    int x,y;
+
+    scanf("%d%d",&r,&c);
+    int ba[r][c];
+    for(i=0; i<r; i++)
+    {
+        for(j=0; j<c; j++)
+        {
+            ba[i][j]=0;
+            printf("%d ",ba[i][j]);
+        }
+        printf("\n");
+    }
+
+
+
+    do
+    {
+        printf("play your move ");
+        scanf("%d%d",&x,&y);
+    }
+    while(x>=r||y>=c);
+
+    mines(ba,x,y,r,c);
+    printf("\n\n\n\n\n\n");
+       for(i=0; i<r; i++)
+    {
+        for(j=0; j<c; j++)
+            printf("%d ",ba[i][j]);
+        printf("\n");
+    }
+
+
+    return 0;
+}
+void mines(int ba[r][c],int x, int y,int r,int c)
+{
+    int tc,tr;
+    int m;
+    int i,j;
+    //time_t t;
+    srand(time(NULL));
+    m=1+((r*c)/10);
+    while (m!=0) // puts mines randomly
+    {
+        tr=rand()%r;
+        tc=rand()%c;
+        if ((tr!=(x-2)&&(x-1)&&(x))&&(tc!=(y-1)&&(y-2)&&(y)))
+
+        {
+
+
+                         if (ba[tr][tc]!=9)
+            {
+                ba[tr][tc] = 9;
+                m--;
+            }
+
+
+
+
+        }
+    }
+    /*for(i=0; i<r; i++)
+    {
+        for(j=0; j<c; j++)
+            printf("%d ",ba[i][j]);
+        printf("\n");
+    }
+    */
+    printf("\n");
+    if (ba[0][0]!=9)
+    {
+
+    if (ba[0][1]==9) ba[0][0]+=1;
+    if (ba[1][1]==9) ba[0][0]+=1; /*testing first corner*/
+    if (ba[1][0]==9) ba[0][0]+=1;
+    }
+    if (ba[r-1][0]!=9)
+    {
+
+    if (ba[r-2][0]==9)      ba[r-1][0]+=1;
+    if (ba[r-2][1]==9)      ba[r-1][0]+=1;
+    if (ba[r-1][1]==9)      ba[r-1][0]+=1;
+    }
+    if (ba[0][c-1]!=9)
+    {
+
+    if (ba[0][c-2]==9)     ba[0][c-1]+=1;
+    if (ba[1][c-2]==9)    ba[0][c-1]+=1;
+    if (ba[1][c-1]==9)    ba[0][c-1]+=1;
+    }
+    if (ba[r-1][c-1]!=9)
+    {
+
+    if (ba[r-1][c-2]==9)  ba[r-1][c-1]+=1;
+    if (ba[r-2][c-1]==9)  ba[r-1][c-1]+=1;
+    if (ba[r-2][c-2]==9)    ba[r-1][c-1]+=1;
+    }
+
+
+
+
+for (j=1;j<c-1;j++)
+{
+    if (ba[0][j]!=9)
+    {
+        if (ba[0][j-1]==9) ba[0][j]++;
+         if (ba[0][j+1]==9) ba[0][j]++;
+          if (ba[1][j-1]==9) ba[0][j]++;
+           if (ba[1][j]==9) ba[0][j]++;
+         if (ba[1][j+1]==9) ba[0][j]++;
+
+
+
+    }
+      if (ba[r-1][j]!=9)
+    {
+        if (ba[r-1][j-1]==9) ba[r-1][j]++;
+         if (ba[r-1][j+1]==9) ba[r-1][j]++;
+          if (ba[r-2][j-1]==9) ba[r-1][j]++;
+           if (ba[r-2][j]==9) ba[r-1][j]++;
+         if (ba[r-2][j+1]==9) ba[r-1][j]++;
+
+
+
+    }
+
+}
+
+for(i=1;i<r-1;i++)
+{
+    if (ba[i][0]!=9)
+    {
+        if (ba[i-1][0]==9) ba[i][0]++;
+        if (ba[i+1][0]==9) ba[i][0]++;
+
+        if (ba[i-1][1]==9) ba[i][0]++;
+
+        if (ba[i+1][1]==9) ba[i][0]++;
+
+        if (ba[i][1]==9) ba[i][0]++;
+
+    }
+       if (ba[i][c-1]!=9)
+    {
+        if (ba[i-1][c-1]==9) ba[i][c-1]++;
+        if (ba[i+1][c-1]==9) ba[i][c-1]++;
+
+        if (ba[i-1][c-2]==9) ba[i][c-1]++;
+        if (ba[i][c-2]==9) ba[i][c-1]++;
+        if (ba[i+1][c-2]==9) ba[i][c-1]++;
+
+
+
+    }
+
+
+}
+
+    printf("\n");
+    for(i=1; i<r-1; i++)
+    {
+        for(j=1; j<c-1; j++)
+        {
+            if  (ba[i][j]!=9)
+            {
+                if (ba[i-1][j-1]==9)
+                {
+                    ba[i][j]++;
+                }
+
+                if (ba[i-1][j]==9)
+                {
+                    ba[i][j]++;
+                }
+
+                if (ba[i-1][j+1]==9)
+                {
+                    ba[i][j]++;
+                }
+
+                if (ba[i][j-1]==9)
+                  {
+                       ba[i][j]++;
+                  }
+                if (ba[i][j+1]==9)
+                {
+                    ba[i][j]++;
+                }
+
+                if (ba[i+1][j-1]==9)
+                  {
+                    ba[i][j]++;
+                  }
+                if (ba[i+1][j]==9)
+                    {
+                    ba[i][j]++;
+                    }
+                if (ba[i+1][j+1]==9)
+                    {
+                    ba[i][j]++;
+                    }
+            }
+
+
+
+
+        }
+
+
+    }
+
+
+
+}
+
